@@ -1,3 +1,4 @@
+const pkg = require('./package.json')
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
@@ -30,7 +31,7 @@ export default [{
   input: 'lib/index.js',
   output: [{
     name: 'Mortice',
-    file: 'dist/mortice.js',
+    file: `dist/mortice.${pkg.version}.min.js`,
     format: 'umd',
     exports: 'named',
     sourcemap: true,
