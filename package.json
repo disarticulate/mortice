@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "ava",
-    "lint": "standard"
+    "lint": "standard",
+    "build": "rollup -c"
   },
   "keywords": [
     "read-write",
@@ -26,10 +27,15 @@
   },
   "homepage": "https://github.com/achingbrain/mortice",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "ava": "^3.15.0",
     "browserify": "^17.0.0",
     "delay": "^5.0.0",
     "execa": "^5.0.0",
+    "rollup": "^2.52.1",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-terser": "^7.0.2",
     "run-headless": "^2.0.1",
     "standard": "^16.0.3",
     "webworkify": "^1.5.0"
