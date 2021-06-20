@@ -1,8 +1,9 @@
 const pkg = require('./package.json')
+import externalGlobals from "rollup-plugin-external-globals"
 import nodeResolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import { terser } from 'rollup-plugin-terser'
-import builtins from 'rollup-plugin-node-builtins'
+
 const minificationPlugins =  [terser({
   module: true,
   compress: {
@@ -19,11 +20,15 @@ const minificationPlugins =  [terser({
 })]
 
 const plugins = [
-  builtins(),
   nodeResolve({
+    browser: true,
+    preferBuiltins: false,
     mainFields: ['main']
   }),
   commonjs(),
+  externalGlobals({
+    crypto: "crypto"
+  }),
   ...minificationPlugins
 ]
 
@@ -36,5 +41,6 @@ export default [{
     exports: 'named',
     sourcemap: true,
   }],
+  external: ['crypto'],
   plugins
 }]
